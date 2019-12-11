@@ -18,6 +18,7 @@ simulateFloodlightSensor = function () {
     },"JSON")
 };
 
+
 simulateTemperatureSensor = function () {
     //先从服务器读取 当前 处于工作中 的注册设备，更新设备的检测数据，关键是根据设备的id进行读写
 
@@ -230,8 +231,8 @@ $(document).ready(function () {
 
         showType = "floodlight";
         reloadFloodlightTable();
-        floSim = window.setInterval(simulateFloodlightSensor, 10500);
-        floRel = window.setInterval(reloadFloodlightTable, 10000);
+        floSim = window.setInterval(simulateFloodlightSensor, 2500);
+        floRel = window.setInterval(reloadFloodlightTable, 2000);
     });
 
      $("#temperatureShowBtn").click(function () {
@@ -317,7 +318,7 @@ $(document).ready(function () {
     });
 
 
-    $("#monitorTable").off().on('click', ".btnWork", function () {
+    $("#monitorTable").on('click', ".btnWork", function () {
         $('#form')[0].reset();
         $("#formBody").hide();
         $("#controlDiv1").hide();
@@ -338,6 +339,7 @@ $(document).ready(function () {
         }
         $('#modal_form').modal('show');
         $('.modal-title').text('修改传感器状态');
+        return false;
     });
 
     $("#monitorTable").on('click', ".btnDel", function () {
@@ -486,6 +488,7 @@ $(document).ready(function () {
                 alert('修改设备状态错误！');
             }
         })
+        return false;
     });
 
 });

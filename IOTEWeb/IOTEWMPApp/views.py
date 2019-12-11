@@ -6,7 +6,7 @@ from django.contrib.auth import  authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import logging
-
+from struct_data import receiveExe
 # Create your views here.
 
 def managePage(request):
@@ -43,6 +43,7 @@ def my_logout(request):
 @login_required()
 def floodlightMonitor(request):
     result = {}
+
     #读取传感器数据
     if request.method == "GET":
         #来自传感器模拟的读请求,返回工作中的传感器
@@ -137,6 +138,7 @@ def floodlightSensor(request):
 @login_required()
 def temperatureMonitor(request):
     result = {}
+    #receiveExe()
     #读取传感器数据
     if request.method == "GET":
         #来自传感器模拟的读请求,返回工作中的传感器
