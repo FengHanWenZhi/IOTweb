@@ -22,20 +22,28 @@ def my_login(request):
     elif request.method == 'POST':
         username= request.POST['username']
         password= request.POST['password']
-        user = authenticate(username=username,password=password)
-        if user is not None:
-            if user.is_active:
-                login(request,user)
-                #重定向到成功页面
-            else:
-                #提示错误信息
-                warning1 = "登陆失败！"
-                return render(request, 'login.html', {'warning': warning1})
+        # user = authenticate(username=username,password=password)
+        user = (username == "admin" and password == "password")
+        if user == True:
+            return render(request, 'ManagementPlatform.html', {'username': username})
         else:
-            #提示错误信息
             warning2 = "用户不存在或密码错误！"
             return render(request, 'login.html', {'warning': warning2})
-        return render(request, 'ManagementPlatform.html', {'username': username})
+
+        #
+        # if user is not None:
+        #     if user.is_active:
+        #         login(request,user)
+        #         #重定向到成功页面
+        #     else:
+        #         #提示错误信息
+        #         warning1 = "登陆失败！"
+        #         return render(request, 'login.html', {'warning': warning1})
+        # else:
+        #     #提示错误信息
+        #     warning2 = "用户不存在或密码错误！"
+        #     return render(request, 'login.html', {'warning': warning2})
+        # return render(request, 'ManagementPlatform.html', {'username': username})
 
 def my_logout(request):
     logout(request)

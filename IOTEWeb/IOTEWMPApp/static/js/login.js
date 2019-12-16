@@ -12,7 +12,7 @@ function checkFullIn(){
         return false;
     }
 
-    if ("wtk" == x && "qweasdzxc" == y){
+    if ("admin" == x && "password" == y){
         if (document.getelementbyid('checkboxid').checked){
             setcookie("checkboxc", true, 7);
             setcookie("usernamec", document.getelementbyid('usernameid').value, 7);
@@ -23,10 +23,10 @@ function checkFullIn(){
         }
         return true;
     }else{
-        if("wtk" != x){
+        if("admin" != x){
             alert("该用户不存在，是否注册？");
             <!-- 以后可以添加注册页面 -->
-        }else if ("qweasdzxc" != y){
+        }else if ("password" != y){
             alert("密码错误！");
         }
         return false;
